@@ -5,6 +5,17 @@
     <title>{{ laptop_details.laptop_name }}</title>
 </head>
 <body>
-
+    <img src="{{ laptop_details.laptop_image.url }}" alt="">
+    <ul>
+        Laptops Name =>{{ laptop_details.laptop_name }}
+        Company =>{{ laptop_details.company }}
+        Laptop Cost =>{{ laptop_details.cost }}
+        Laptop SerialNo. =>{{ laptop_details.laptop_serial }}
+        <ul>
+        {% for category in laptop_details.category.all %}
+            <li>{{ category }}</li>
+        {% endfor %}
+        </ul>
+    </ul>
 </body>
 </html>
