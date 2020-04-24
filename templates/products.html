@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+<ul>
+    {% for laptop in category.laptop_set.all %}
+        <li><a href="{% url 'recommended:req_laptop' req_laptop=laptop laptop_category=category %}">{{ laptop }}</a> </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
