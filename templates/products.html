@@ -5,10 +5,14 @@
     <title>Products</title>
 </head>
 <body>
+{% if user.is_authenticated %}
 <ul>
     {% for laptop in category.laptop_set.all %}
         <li><a href="{% url 'recommended:req_laptop' req_laptop=laptop laptop_category=category %}">{{ laptop }}</a> </li>
     {% endfor %}
+{% else %}
+    <a href="/accounts/login">Click Here to Login To continue</a>
+{% endif %}
 </ul>
 </body>
 </html>
