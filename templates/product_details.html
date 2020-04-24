@@ -5,17 +5,20 @@
     <title>{{ laptop_details.laptop_name }}</title>
 </head>
 <body>
-    <img src="{{ laptop_details.laptop_image.url }}" alt="">
+    <img src="{{ laptop_details.laptop_image.url }}" height="300" width="300" alt="">
     <ul>
-        Laptops Name =>{{ laptop_details.laptop_name }}
-        Company =>{{ laptop_details.company }}
-        Laptop Cost =>{{ laptop_details.cost }}
-        Laptop SerialNo. =>{{ laptop_details.laptop_serial }}
+        Laptops Name =>{{ laptop_details.laptop_name }}<br>
+        Company =>{{ laptop_details.company }}<br>
+        Laptop Cost =>{{ laptop_details.cost }}<br>
+        Laptop SerialNo. =>{{ laptop_details.laptop_serial }}<br>
+        Categories :
         <ul>
         {% for category in laptop_details.category.all %}
             <li>{{ category }}</li>
         {% endfor %}
         </ul>
+     <a href="{{ laptop_details.laptop_link_1 }}" target="_blank">Official Laptop Link</a><br>
+    <a href="{{ laptop_details.laptop_link_2 }}" target="_blank">Amazon Link</a>
     </ul>
 </body>
 </html>

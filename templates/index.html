@@ -172,7 +172,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="home_search_container">
-						<div class="home_search_title">Search for your trip</div>
+						<div class="home_search_title">Search for your Laptop</div>
 						<div class="home_search_content">
 							<form action="#" class="home_search_form" id="home_search_form">
 								<div class="d-flex flex-lg-row flex-column align-items-center justify-content-center">
@@ -243,17 +243,19 @@
 
 						<!-- Destination -->
                         {% for company in companies %}
+                            {% if company.best_company %}
 						<div class="destination item">
 							<div class="destination_image">
                                 <img src= "{{company.company_image.url}}" alt="">
 								<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
 							</div>
 							<div class="destination_content">
-								<div class="destination_title"><a href="destinations.html">"{{company.company_image.url}}" {{ company.company_name }}</a></div>
-								<div class="destination_subtitle"><p>{{ company.company_desc }}</p></div>
+								<div class="destination_title"><a href="destinations.html">{{ company.company_name }}</a></div>
+								<div class="destination_subtitle"><p>{{ company.company_desc|safe }}</p></div>
 								<div class="destination_price">From {{ company.price }}</div>
 							</div>
 						</div>
+                            {% endif %}
 
                         {% endfor %}
 
@@ -352,8 +354,24 @@
 						</div>
                         {% endfor %}
 
-						<!-- News Post -->
+                        {% for laptop in laptops %}
+                            {% if laptop.NewlyLaunched == True %}
+                                <div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
+                            <div class="news_post_image"><a href="{{ laptop.laptop_link_1 }}" target="_blank"><img src= "{{ laptop.laptop_image.url }}" alt=""></a></div>
+							<div class="news_post_content">
+								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
+                                    <div><h4>"{{ laptop.laptop_name }}</h4></div>
+								</div>
+{#								<div class="news_post_text">#}
+{#									<p>"{{ laptop.laptop_desc }}</p>#}
+{#								</div>#}
+							</div>
+						</div>
+                            {% endif %}
+                        {% endfor %}
 
+
+						<!-- News Post -->
 
 					</div>
 				</div>

@@ -31,4 +31,4 @@ def home(request):
     # c3.company_image = "asus-rog.jpg"
     companies = Companies.objects.all()
     new_laptops = NewLaptopReleases.objects.all()
-    return render(request, "index.html", {"companies": companies, "new_laptops": new_laptops})
+    return render(request, "index.html", {"companies": companies, "new_laptops": new_laptops, "laptops": Laptop.objects.all()})
