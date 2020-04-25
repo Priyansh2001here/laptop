@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Category
 from django.http import HttpResponse
 from best_laptops.models import Laptop
+from accounts.models import Comment
 
 
 # Create your views here.
@@ -20,3 +21,16 @@ def show_laptop(request, req_laptop, laptop_category):
     laptop = Laptop.objects.filter(laptop_name=req_laptop)
     laptop = laptop[0]
     return render(request, 'product_details.html', {"laptop_details": laptop})
+
+
+def add_comment(request, req_laptop):
+    print("\n\n" + "fun")
+    comment = request.GET['user_comment']
+    print('\n\n' + comment + '\n\n')
+    c1 = Comment()
+    c1.user = request.user
+    c1.comment = comment
+    req_laptop = Laptop.objects.get(laptop_name=req_laptop)
+    c1.to_which = req_laptop
+    c1.save()
+    return show_laptop(request, req_laptop, req_laptop.category)

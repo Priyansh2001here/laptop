@@ -19,6 +19,20 @@
         </ul>
      <a href="{{ laptop_details.laptop_link_1 }}" target="_blank">Official Laptop Link</a><br>
     <a href="{{ laptop_details.laptop_link_2 }}" target="_blank">Amazon Link</a>
+    <h2>Comments</h2><br>
+    <ul>
+            {% for comment in laptop_details.comment_set.all %}
+                <p>
+                -------------------------------
+                <h4>{{ comment }}</h4>
+                <h8>{{ comment.user }}</h8><p></p>
+                -------------------------------
+                {% endfor %}
+    </ul>
+    <form method="get" action="{% url 'recommended:user_comment' req_laptop=laptop_details %}">
+        <input placeholder="Your Comment" name="user_comment">
+        <input type="submit">
+    </form>
     </ul>
 </body>
 </html>
