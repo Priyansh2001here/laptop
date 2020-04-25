@@ -34,8 +34,9 @@
 									<li class="active"><a href="index.html">Home</a></li>
 
                                     {% if user.is_authenticated %}
-                                        <li>Hello {{ user.name }}</li>
+                                        <li>Hello {{ user }}</li>
                                         <li><a href="accounts/logout">Logout</a></li>
+                                        <li><a href="accounts/friend/">Friends</a></li>
                                         {% else %}
                                             <li><a href="accounts/register">Register</a></li>
                                             <li><a href="accounts/login">Login</a></li>

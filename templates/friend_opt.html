@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friend Index</title>
+</head>
+<body>
+    <ol>
+        <li><a href = "{% url 'accounts:friend' operation='show' %}">Show Friends/ Remove</a></li>
+        <li><a href = "{% url 'accounts:friend' operation='requests' %}">show Friend requests</a></li>
+        <li><a href = "{% url 'accounts:add_page' %}">Add Friend</a></li>
+    </ol>
+</body>
+</html>

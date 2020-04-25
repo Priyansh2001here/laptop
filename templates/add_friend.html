@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Friends</title>
+</head>
+<body>
+    <ul>
+        {% for user in users %}
+            <li>Add {{ user }}      <a href=" {% url 'accounts:add_friend' to_user=user %} ">Add Friend</a> </li>
+        {% endfor %}
+
+    </ul>
+</body>
+</html>
