@@ -14,13 +14,13 @@ def categories(request):
 def show_products(request, laptop_category):
     category = Category.objects.filter(name=laptop_category)  # Query Set
     category = category[0]  # Category
-    return render(request, 'products.html', {'category': category})
+    return render(request, 'products.html', {'category': category, "user": request.user})
 
 
 def show_laptop(request, req_laptop, laptop_category):
     laptop = Laptop.objects.filter(laptop_name=req_laptop)
     laptop = laptop[0]
-    return render(request, 'product_details.html', {"laptop_details": laptop})
+    return render(request, 'product_details.html', {"laptop_details": laptop, "user": request.user})
 
 
 def add_comment(request, req_laptop):

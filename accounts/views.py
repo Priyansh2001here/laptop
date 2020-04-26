@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 from friendship.models import Friend, Follow, Block
 from django.http import HttpResponse
 from friendship.models import FriendshipRequest
-
+from accounts.models import Message, Msgfromuser
 
 # Create your views here.
 def register(request):
@@ -98,3 +98,35 @@ def remove(request, which_user):
     user = User.objects.get(username=which_user)
     Friend.objects.remove_friend(request.user, user)
     return show_friend(request, operation="show")
+
+
+def show_msg_friends(request):
+    friends = Friend.objects.friends(request.user)
+    return render(request, 'message_friend_disp.html', {"friends":friends})
+
+
+def message_to(request, user_name):
+    return render(request, 'messageScreen.html', {'user':user_name})
+
+
+def send_msg(request, to_user):
+    from_user = request.user
+    msg = Message()
+    message = request.POST['message']
+    msg.msg = message
+    msg.from_user = from_user
+    msg.save()
+    to = Msgfromuser()
+    to_user = User.objects.get(username=to_user)
+    to.to_user = to_user
+    to.msg = msg
+    to.save()
+    http = "Msg sent", "msg:", msg, "to", to
+    return HttpResponse(http)
+
+def show_messages(request, from_user):
+    messages_q = Msgfromuser.objects.filter(to_user=request.user)
+    messages = []
+    for i in messages_q:
+        messages.append(i)
+    return render(request, 'viewMessages.html', {"messages":messages})
