@@ -37,6 +37,9 @@
                                         <li>Hello {{ user }}</li>
                                         <li><a href="accounts/logout">Logout</a></li>
                                         <li><a href="accounts/friend/">Friends</a></li>
+
+                                            <li><a href="{% url 'accounts:show_frnd_for_msg' %}">send Msg</a></li>
+                                            <li><a href="{% url 'accounts:seemessages' from_user=user %}">Inbox</a></li>
                                         {% else %}
                                             <li><a href="accounts/register">Register</a></li>
                                             <li><a href="accounts/login">Login</a></li>
