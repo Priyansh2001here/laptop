@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Write Message</title>
+</head>
+<body>
+<form action="{% url 'accounts:sendMsg' to_user=user %}" method="post">
+    {% csrf_token %}
+    <h3>Message to {{ user }}</h3>
+    <label>
+        <input type="text" placeholder="write your message here" name="message">
+    </label>
+    <input type="submit">
+</form>
+</body>
+</html>

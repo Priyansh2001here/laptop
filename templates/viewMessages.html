@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Messages</title>
+</head>
+<body>
+<h2>INBOX</h2>
+    {% for message in messages %}
+        -------------------------------------<br>
+        MSG -> {{ message.msg }}<br>
+        FROM-> {{ message.msg.from_user }}<br>
+        -------------------------------------
+    {% endfor %}
+
+</body>
+</html>

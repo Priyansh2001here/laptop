@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friends</title>
+</head>
+<body>
+<ol>
+{% for friend in friends %}
+    <li><a href="{% url 'accounts:mesageUser' user_name=friend %}">{{ friend }}</a></li>
+{% endfor %}
+</ol>
+</body>
+</html>
